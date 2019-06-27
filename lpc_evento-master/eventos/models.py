@@ -29,7 +29,7 @@ class Evento(models.Model):
     dataEHoraDeInicio = models.DateTimeField(blank=True, null=True)
     palavrasChave = models.CharField(max_length=256)
     logotipo = models.CharField(max_length=40)
-    realizador = models.ForeignKey(Pessoa, null=True, blank=False)
+    realizador = models.ForeignKey(Pessoa, null=True, blank=False, on_delete=models.CASCADE)
     cidade = models.CharField(max_length=100)
     uf = models.CharField(max_length=2)
     endereco = models.CharField(max_length=100)
@@ -46,7 +46,7 @@ class EventoCientifico(Evento):
 
 class ArtigoCientifico(models.Model):
     titulo = models.CharField(max_length=300)
-    evento = models.ForeignKey(EventoCientifico, null=True, blank=True)
+    evento = models.ForeignKey(EventoCientifico, null=True, blank=True, on_delete=models.CASCADE)
     #autores = ArrayField(models.CharField(max_length=100), blank=False)
 
     def __str__(self):
